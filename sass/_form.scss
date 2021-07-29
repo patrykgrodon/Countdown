@@ -1,0 +1,114 @@
+.form {
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-secondary);
+  color: var(--color-secondary);
+  box-shadow: 0.5rem 0.5rem 2rem black;
+
+  width: 60rem;
+  height: 45rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__header {
+    width: 40rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  &__input {
+    border: 1px solid var(--color-secondary);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    width: 30rem;
+    text-align: center;
+
+    font-weight: bold;
+    transition: 0.3s all;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px var(--color-secondary);
+    }
+  }
+
+  &__text {
+    &::placeholder {
+      font-weight: 400;
+    }
+    &:focus::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &__btn {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+    border: 3px solid currentColor;
+    transition: 0.3s all;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-secondary);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0px);
+    }
+  }
+
+  &__btn--close {
+    font-weight: bold;
+    position: absolute;
+    font-size: 2.5rem;
+    top: 1.5rem;
+    right: 2rem;
+  }
+}
+
+.form__valid-name,
+.form__valid-date {
+  max-height: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  transition: max-hegiht 3s;
+}
+.form__valid {
+  animation: showValid 3s;
+  transform-origin: top;
+}
+@keyframes showValid {
+  0% {
+    max-height: 0;
+    transform: scaleY(0);
+  }
+  15% {
+    max-height: 1.2rem;
+    transform: scaleY(1);
+  }
+  85% {
+    transform: scaleY(1);
+    max-height: 1.2rem;
+  }
+  100% {
+    max-height: 0;
+    transform: scaleY(0);
+  }
+}

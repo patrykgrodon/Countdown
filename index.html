@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5.2/distr/fira_code.css"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script defer type="module" src="./src/controler.js"></script>
+    <title>Minutnik</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header--primary">Minutnik.</h1>
+      <div class="header__buttons">
+        <button class="header__btn display__form">Dodaj wydarzenie</button>
+        <button class="header__btn display__events">Twoje wydarzenia</button>
+      </div>
+    </header>
+
+    <section class="greeting">
+      <h2 class="greeting__header">
+        Dodaj ważne wydarzenia ze swojego życia. <br />Nie pozwól żeby Ci
+        umknęły!
+      </h2>
+      <button class="greeting__btn display__form">Dodaj wydarzenie</button>
+    </section>
+    <secton class="random">
+      <h2 class="random__header">Przykładowe Wydarzenia</h2>
+      <div class="random-box"></div>
+    </secton>
+    <section class="events">
+      <h2 class="events__header">Twoje wydarzenia</h2>
+      <div class="events-box"></div>
+    </section>
+
+    <form class="form hidden">
+      <button class="form__btn--close">x</button>
+      <h2 class="form__header">
+        Wpisz informacje dotyczące wydarzenia, które chcesz dodać do Minutnika.
+      </h2>
+      <label class="form__label">Nazwa wydarzenia</label>
+      <input
+        type="text"
+        class="form__input form__name"
+        placeholder="Np. Urodziny"
+      />
+      <p class="form__valid form__valid-name hidden">
+        Wpisz nazwę wydarzenia(min. 3 znaki max. 30).
+      </p>
+      <label class="form__label">Data wydarzenia</label>
+      <input type="date" class="form__input form__date" />
+      <p class="form__valid form__valid-date hidden">Wpisz datę wydarzenia.</p>
+      <label class="form__label">Godzina wydarzenia</label>
+      <input type="time" class="form__input form__time" />
+      <button class="form__btn form__btn--add">Dodaj wydarzenie</button>
+      <button class="form__btn form__btn--add-next hidden">
+        Dodaj kolejne wydarzenie
+      </button>
+    </form>
+    <div class="modal hidden">
+      <p class="modal__question"></p>
+      <button class="modal__answer-1">TAK</button>
+      <button class="modal__answer-2">NIE</button>
+    </div>
+  </body>
+</html>

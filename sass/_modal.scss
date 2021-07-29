@@ -1,0 +1,56 @@
+.modal {
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-secondary);
+  color: var(--color-secondary);
+  box-shadow: 0.5rem 0.5rem 2rem black;
+
+  width: 45rem;
+  padding: 5rem;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, mnimax(0, max-content));
+  grid-gap: 2rem;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__question {
+    width: 30rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    grid-column: 1 / span 2;
+  }
+  &__answer-1 {
+    align-self: end;
+    margin-left: 5rem;
+  }
+  &__answer-2 {
+    margin-right: 5rem;
+  }
+
+  button {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    border: 3px solid var(--color-secondary);
+    transition: 0.3s all;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-secondary);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0px);
+    }
+  }
+}
