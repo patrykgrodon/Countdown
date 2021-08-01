@@ -13,11 +13,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// RWD Breakpoints
+$bp-large: 62.5em; // 1000px
+$bp-medium: 43.75em; // 700px
+$bp-small: 31.25em; // 500px
+
 html {
-  font-size: 62.5%; // 10px
   background-color: var(--color-primary);
   color: white;
   font-family: "Fira Code", monospace;
+
+  font-size: 62.5%; // 10px
+
+  @media only screen and (max-width: $bp-medium) {
+    font-size: 50%; // 8px
+  }
 }
 
 body {
@@ -27,7 +38,6 @@ body {
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-
   padding-top: var(--header-height);
 }
 button {

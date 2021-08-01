@@ -8,6 +8,12 @@ class eventView {
   }
   render(events) {
     this._clear();
+    if (events.length === 0) {
+      this._displayNoEventsMessage();
+      return;
+    }
+    document.querySelector(".events__valid__message").classList.add("hidden");
+    document.querySelector(".events__header").classList.remove("hidden");
     events.forEach((ev) => {
       const eventEl = document.createElement("div");
       eventEl.classList.add("event");
@@ -132,6 +138,13 @@ class eventView {
     modal.classList.add("hidden");
 
     modal.dataset.type = "none";
+  }
+  _displayNoEventsMessage() {
+    console.log("Nie ma żadnych eventów");
+    document
+      .querySelector(".events__valid__message")
+      .classList.remove("hidden");
+    document.querySelector(".events__header").classList.add("hidden");
   }
 }
 export default new eventView();

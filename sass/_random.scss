@@ -6,35 +6,42 @@
     color: var(--color-secondary);
     font-size: 4rem;
     margin-bottom: 5rem;
+    text-align: center;
+    @media only screen and(max-width: $bp-medium) {
+      font-size: 3rem;
+    }
   }
 }
 .random-box {
   width: 80vw;
   min-height: 32rem;
-  max-height: auto;
   padding: 6rem 0;
   background-color: var(--color-secondary);
   overflow: hidden;
   margin-bottom: 10rem;
   position: relative;
-
   display: flex;
+
+  @media only screen and(max-width: $bp-large) {
+    padding: 4rem 0;
+    width: 100vw;
+  }
+  @media only screen and(max-width: $bp-small) {
+    padding: 2rem 0;
+  }
 }
 
 .random__event {
   flex-shrink: 0;
-
   width: 30rem;
   min-height: 20rem;
-  max-height: auto;
   border: 2px solid currentColor;
   padding: 4rem 3rem 2rem;
-  margin-bottom: 1rem;
   border-radius: 5rem;
 
+  background-color: var(--color-primary);
   color: var(--color-secondary);
   text-align: center;
-  background-color: var(--color-primary);
 
   display: grid;
   justify-items: center;

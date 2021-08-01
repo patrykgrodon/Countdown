@@ -17,10 +17,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media only screen and(max-width: $bp-small) {
+    width: 95vw;
+  }
+
   &__header {
     width: 40rem;
     text-align: center;
     margin-bottom: 2rem;
+
+    @media only screen and(max-width: $bp-small) {
+      width: 80%;
+      font-size: 1.5rem;
+    }
   }
 
   &__label {
@@ -36,6 +45,11 @@
 
     font-weight: bold;
     transition: 0.3s all;
+
+    @media only screen and(max-width: $bp-small) {
+      width: 70%;
+    }
+
     &:focus {
       outline: none;
       box-shadow: 0 0 0 1px var(--color-secondary);
@@ -58,17 +72,17 @@
     margin-top: 1rem;
     font-size: 2rem;
     font-weight: 400;
-    border: 3px solid currentColor;
+    border: 3px solid var(--color-secondary);
     transition: 0.3s all;
 
     &:hover {
       background-color: var(--color-primary);
       color: var(--color-secondary);
-      transform: translateY(-2px);
+      transform: translateY(-5px);
     }
 
     &:active {
-      transform: translateY(0px);
+      transform: translateY(-2px);
     }
   }
 

@@ -1,4 +1,3 @@
-import { RANDOM_EVENT_MARGIN } from "../config.js";
 class RandomView {
   constructor() {
     this._parentEl = document.querySelector(".random-box");
@@ -53,10 +52,17 @@ class RandomView {
     );
   }
   _calcEventValues() {
+    const windowFontSize = +getComputedStyle(
+      document.documentElement
+    ).fontSize.slice(0, -2);
     const randomSectionWidth =
-      document.querySelector(".random").offsetWidth / 10;
-    const evWidth = document.querySelector(".random__event").offsetWidth / 10;
-    const evMinMargin = RANDOM_EVENT_MARGIN;
+      document.querySelector(".random").offsetWidth / windowFontSize;
+    const evWidth =
+      document.querySelector(".random__event").offsetWidth / windowFontSize;
+    const randomEventsBox = document.querySelector(".random-box");
+    const evMinMargin =
+      window.getComputedStyle(randomEventsBox).paddingTop.slice(0, -2) /
+      windowFontSize;
     const evStartTotalWidth = evWidth + evMinMargin * 2;
     const elCanBeDisplayed = Math.floor(randomSectionWidth / evStartTotalWidth);
     const spaceLeft = randomSectionWidth - evStartTotalWidth * elCanBeDisplayed;

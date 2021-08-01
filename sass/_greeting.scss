@@ -3,32 +3,39 @@
   font-size: 2rem;
   text-align: center;
   padding: 13rem 0;
+  @media only screen and(max-width: $bp-large) {
+    width: 80vw;
+  }
 
   &__header {
     color: var(--color-secondary);
     line-height: 1.6;
+
+    @media only screen and(max-width: $bp-small) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.btn--black {
+  margin-top: 2rem;
+  padding: 2rem;
+  font-size: 2rem;
+  font-family: "Fira Code", monospace;
+  border-radius: 2rem;
+
+  background-color: var(--color-secondary);
+  border: 2px solid currentColor;
+  color: var(--color-primary);
+  transition: 0.3s all;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    transform: translateY(-5px);
   }
 
-  &__btn {
-    margin-top: 2rem;
-    padding: 2rem;
-    font-size: 2rem;
-    font-family: "Fira Code", monospace;
-    border-radius: 2rem;
-
-    background-color: var(--color-secondary);
-    border: 2px solid currentColor;
-    color: var(--color-primary);
-    transition: 0.3s all;
-
-    &:hover {
-      background-color: var(--color-primary);
-      color: var(--color-secondary);
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0px);
-    }
+  &:active {
+    transform: translateY(-2px);
   }
 }

@@ -4,8 +4,8 @@
   color: var(--color-secondary);
   box-shadow: 0.5rem 0.5rem 2rem black;
 
-  width: 45rem;
-  padding: 5rem;
+  width: 35rem;
+  padding: 3rem;
 
   display: grid;
   justify-items: center;
@@ -42,6 +42,9 @@
     font-weight: 400;
     border: 3px solid var(--color-secondary);
     transition: 0.3s all;
+    @media only screen and (max-width: $bp-medium) {
+      padding: 1rem 1.5rem;
+    }
 
     &:hover {
       background-color: var(--color-primary);
