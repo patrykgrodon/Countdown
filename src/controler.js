@@ -7,8 +7,10 @@ import eventView from "../src/views/eventView.js";
 const controlEvents = function () {
   // 1. Render events
   const events = model.getLocalStorage();
-  if (!events) return;
   eventView.render(events);
+};
+const controlSearchEvents = function (input) {
+  eventView.searchEvents(input, model.state.events);
 };
 
 const controlAddEventForm = function (e) {
@@ -57,6 +59,8 @@ const init = function () {
   eventView.addHandlerRemoveEvent(controlRemoveEvent);
   eventView.addHandlerDisplayModal();
   eventView.addHandlerScrollToEvents();
+  eventView.addHandlerSearchEvents(controlSearchEvents);
+  eventView.addHandlerSortEvents();
   randomView.addHandlerDisplayModal();
   randomView.addHandlerAddEvent(controlAddEventRandom);
   randomView.addHandlerSlider(controlRandomSlider);

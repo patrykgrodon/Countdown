@@ -34,11 +34,47 @@
     </secton>
     <section class="events">
       <h2 class="events__header">Twoje wydarzenia</h2>
+
       <div class="events__valid__message hidden">
         <h3 class="events__header-tertiary">
           Nie dodałeś jeszcze żadnych wydarzeń!
         </h3>
         <button class="btn--black display__form">Dodaj wydarzenie</button>
+      </div>
+      <div class="events__filter">
+        <div class="events__filter__search">
+          <label class="events__filter__label">Wyszukaj po nazwie</label>
+          <input type="text" class="events__filter__input" />
+        </div>
+        <div class="events__filter__sort">
+          <button
+            class="
+              events__filter__btn
+              events__filter__btn--active
+              events__filter__display
+            "
+          >
+            Sortuj
+          </button>
+          <ul class="events__filter__list hide">
+            <li class="events__filter__item">
+              <button
+                class="events__filter__btn events__sort events__sort--desc"
+                data-type="desc"
+              >
+                Według daty malejąco
+              </button>
+            </li>
+            <li class="events__filter__item">
+              <button
+                class="events__filter__btn events__sort events__sort--asc"
+                data-type="asc"
+              >
+                Według daty rosnąco
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="events-box"></div>
     </section>

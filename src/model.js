@@ -49,10 +49,9 @@ export const state = {
   events: [],
   randomEvents,
 };
-export const loadEvents = function () {};
 
 export const addEvent = function (data) {
-  state.events.push({ ...data, id: state.events.length, active: false });
+  state.events.push({ ...data, id: state.events.length });
   setLocalStorage();
 };
 

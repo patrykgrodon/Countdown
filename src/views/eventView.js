@@ -2,19 +2,25 @@ const modal = document.querySelector(".modal");
 class eventView {
   constructor() {
     this._parentEl = document.querySelector(".events-box");
+    this._events = [];
+    this._sort = {
+      active: false,
+      type: "",
+    };
   }
   _clear() {
     this._parentEl.innerHTML = "";
   }
-  render(events) {
+  render(events, search = false) {
+    this._events = events;
     this._clear();
-    if (events.length === 0) {
+    if (events.length === 0 && search === false) {
       this._displayNoEventsMessage();
       return;
     }
-    document.querySelector(".events__valid__message").classList.add("hidden");
-    document.querySelector(".events__header").classList.remove("hidden");
-    events.forEach((ev) => {
+    this._hideNoEventsMessage();
+    if (this._sort.active === true) this._sortEvents(this._sort.type);
+    this._events.forEach((ev) => {
       const eventEl = document.createElement("div");
       eventEl.classList.add("event");
       eventEl.dataset.id = ev.id;
@@ -35,7 +41,56 @@ class eventView {
       this.startCountdown(eventEl);
     });
   }
-
+  searchEvents(input, events) {
+    const searchedEvents = events.filter((ev) => {
+      const eventName = ev.name.toLowerCase();
+      const inputValue = input.value.toLowerCase();
+      return eventName.includes(inputValue);
+    });
+    this.render(searchedEvents, true);
+    if (searchedEvents.length === 0) this._displayNoResultsMsg();
+  }
+  _sortEvents(type) {
+    this._events.sort((a, b) => {
+      const dateA = new Date(a.date.replaceAll("-", ", ") + " " + a.time);
+      const dateB = new Date(b.date.replaceAll("-", ", ") + " " + b.time);
+      return type === "desc"
+        ? dateA.getTime() - dateB.getTime()
+        : dateB.getTime() - dateA.getTime();
+    });
+  }
+  addHandlerSearchEvents(handler) {
+    const input = document.querySelector(".events__filter__input");
+    input.addEventListener("input", () => {
+      handler(input);
+    });
+  }
+  addHandlerSortEvents() {
+    const parentEl = document.querySelector(".events__filter__sort");
+    parentEl.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("events__filter__btn")) return;
+      if (e.target.classList.contains("events__filter__display"))
+        this._toogleSort();
+      if (e.target.classList.contains("events__sort")) {
+        const sortType = e.target.dataset.type;
+        this._sort.active = true;
+        this._sort.type = sortType;
+        this.render(this._events, "", sortType);
+        if (sortType === "desc") {
+          e.target.classList.add("events__filter__btn--active");
+          document
+            .querySelector(".events__sort--asc")
+            .classList.remove("events__filter__btn--active");
+        }
+        if (sortType === "asc") {
+          e.target.classList.add("events__filter__btn--active");
+          document
+            .querySelector(".events__sort--desc")
+            .classList.remove("events__filter__btn--active");
+        }
+      }
+    });
+  }
   addHandlerAddEvent(handler) {
     const form = document.querySelector(".form");
     form.addEventListener("click", function (e) {
@@ -46,12 +101,6 @@ class eventView {
         return;
       }
       handler(e);
-    });
-  }
-  addHandlerEditEvent(handler) {
-    this._parentEl.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("event__edit")) return;
-      handler(e.target.closest(".event"));
     });
   }
   addHandlerRemoveEvent(handler) {
@@ -140,11 +189,22 @@ class eventView {
     modal.dataset.type = "none";
   }
   _displayNoEventsMessage() {
-    console.log("Nie ma żadnych eventów");
     document
       .querySelector(".events__valid__message")
       .classList.remove("hidden");
     document.querySelector(".events__header").classList.add("hidden");
+    document.querySelector(".events__filter").classList.add("hidden");
+  }
+  _hideNoEventsMessage() {
+    document.querySelector(".events__valid__message").classList.add("hidden");
+    document.querySelector(".events__header").classList.remove("hidden");
+    document.querySelector(".events__filter").classList.remove("hidden");
+  }
+  _toogleSort() {
+    document.querySelector(".events__filter__list").classList.toggle("hide");
+  }
+  _displayNoResultsMsg() {
+    this._parentEl.innerHTML = `<h3 class="events-box__header">Brak wyników</h3>`;
   }
 }
 export default new eventView();
