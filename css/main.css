@@ -302,6 +302,7 @@ button {
   justify-items: center;
   grid-gap: 5rem;
   width: 100%;
+  min-height: 25rem;
   padding: 5rem;
   position: relative;
 }
@@ -325,7 +326,7 @@ button {
 .event {
   text-align: center;
   width: 30rem;
-  min-height: auto;
+  min-height: 20rem;
   background-color: var(--color-primary);
   border: 2px solid var(--color-secondary);
   padding: 3rem 3rem 1.5rem;
