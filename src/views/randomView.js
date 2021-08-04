@@ -23,30 +23,31 @@ class RandomView {
     this._init();
   }
   _init() {
-    let moves = 0;
+    let moveTo = 0;
     const { elCanBeDisplayed } = this._calcEventValues();
     let indexOfLastElementInView = elCanBeDisplayed - 1;
     const randomEvents = document.querySelectorAll(".random__event");
-    this._moveSlider(randomEvents, moves, indexOfLastElementInView);
+    this._moveSlider(randomEvents, moveTo, indexOfLastElementInView);
   }
-  _moveSlider(randomEvents, moves, indexOfLastElementInView) {
+  _moveSlider(randomEvents, moveTo, indexOfLastElementInView, prevMG) {
     const { totalMargin, totalWidth, elCanBeDisplayed } =
       this._calcEventValues();
     randomEvents.forEach((ev) => {
-      ev.style.margin = `0 ${totalMargin}rem`;
-      ev.style.transform = `translateX(${-(totalWidth * moves)}rem)`;
+      if (prevMG !== totalMargin) ev.style.margin = `0 ${totalMargin}rem`;
+      ev.style.transform = `translateX(${-(totalWidth * moveTo)}rem)`;
     });
     indexOfLastElementInView += 1;
     if (indexOfLastElementInView > randomEvents.length - 1)
       indexOfLastElementInView = elCanBeDisplayed - 1;
-    moves += 1;
-    if (moves > randomEvents.length - elCanBeDisplayed) moves = 0;
+    moveTo += 1;
+    if (moveTo > randomEvents.length - elCanBeDisplayed) moveTo = 0;
     setTimeout(
       this._moveSlider.bind(
         this,
         randomEvents,
-        moves,
-        indexOfLastElementInView
+        moveTo,
+        indexOfLastElementInView,
+        totalMargin
       ),
       3000
     );
@@ -70,7 +71,7 @@ class RandomView {
     const totalWidth = evWidth + totalMargin * 2;
     return { totalMargin, totalWidth, elCanBeDisplayed };
   }
-  addHandlerSlider(handler) {
+  addHandlerInitSlider(handler) {
     window.addEventListener("load", handler);
   }
   addHandlerAddEvent(handler) {

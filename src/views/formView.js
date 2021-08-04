@@ -2,8 +2,8 @@ const formHeader = document.querySelector(".form__header");
 const formInputs = document.querySelectorAll(".form__input");
 const formLabels = document.querySelectorAll(".form__label");
 const formValids = document.querySelectorAll(".form__valid");
-const formAdd = document.querySelector(".form__btn--add");
-const formAddNext = document.querySelector(".form__btn--add-next");
+const formAddBtn = document.querySelector(".form__btn--add");
+const formAddNextBtn = document.querySelector(".form__btn--add-next");
 
 class formView {
   constructor() {
@@ -11,7 +11,7 @@ class formView {
     this._form = document.querySelector(".form");
   }
 
-  clearForm() {
+  _clear() {
     const eventName = document.querySelector(".form__name");
     const eventDate = document.querySelector(".form__date");
     const eventTime = document.querySelector(".form__time");
@@ -22,21 +22,21 @@ class formView {
   _init() {
     formHeader.innerHTML =
       "Wpisz informacje dotyczące wydarzenia, które chcesz dodać do Minutnika.";
-    formAdd.classList.remove("hidden");
-    formAddNext.classList.add("hidden");
+    formAddBtn.classList.remove("hidden");
+    formAddNextBtn.classList.add("hidden");
     formInputs.forEach((input) => input.classList.remove("hidden"));
     formLabels.forEach((label) => label.classList.remove("hidden"));
-    this.clearForm();
+    this._clear();
   }
 
   _displayAddNextView() {
     formHeader.innerHTML = "Wydarzenie zostało dodane do twojej listy.";
-    formAdd.classList.add("hidden");
-    formAddNext.classList.remove("hidden");
+    formAddBtn.classList.add("hidden");
+    formAddNextBtn.classList.remove("hidden");
     formInputs.forEach((input) => input.classList.add("hidden"));
     formLabels.forEach((label) => label.classList.add("hidden"));
     formValids.forEach((valid) => valid.classList.add("hidden"));
-    this.clearForm();
+    this._clear();
   }
   addHandlerToogleForm() {
     document.body.addEventListener("click", (e) => {
@@ -104,7 +104,7 @@ class formView {
     }
     return validation;
   }
-  changeContent(e, validation) {
+  changeView(e, validation) {
     if (e.target.classList.contains("form__btn--add-next")) {
       this._init();
       return;

@@ -89,13 +89,13 @@ button {
   }
 }
 
-.header--primary {
+.header__logo {
   font-size: 3rem;
   font-weight: 400;
 }
 
 @media only screen and (max-width: 31.25em) {
-  .header--primary {
+  .header__logo {
     font-size: 2rem;
   }
 }
@@ -168,9 +168,6 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   width: 80vw;
   position: relative;
 }
@@ -219,6 +216,7 @@ button {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  height: 14rem;
   margin-top: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -273,7 +271,7 @@ button {
   text-align: center;
 }
 
-.events__header-tertiary {
+.events__valid__header {
   width: 80vw;
   font-size: 3rem;
   text-align: center;

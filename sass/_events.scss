@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     width: 80vw;
     position: relative;
 
@@ -46,6 +45,7 @@
 
     &__sort {
       width: max-content;
+      height: 14rem;
       margin-top: 5rem;
       display: flex;
       align-items: center;
@@ -89,7 +89,7 @@
     padding: 2rem;
     text-align: center;
   }
-  &__header-tertiary {
+  &__valid__header {
     width: 80vw;
     font-size: 3rem;
     text-align: center;
