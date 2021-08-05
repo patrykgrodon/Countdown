@@ -137,6 +137,15 @@ class eventView {
   scrollToEvents() {
     document.querySelector(".events").scrollIntoView({ behavior: "smooth" });
   }
+  scrollToEvent(eventName) {
+    const eventsEl = Array.from(this._parentEl.querySelectorAll(".event"));
+    const event = eventsEl.filter((ev) => {
+      const evName = ev.querySelector(".event__name").textContent;
+      return evName === eventName;
+    })[0];
+
+    event.scrollIntoView({ behavior: "smooth" });
+  }
   startCountdown(el) {
     const eventEl = el.closest(".event");
     const { date, time } = this._getEventData(eventEl);

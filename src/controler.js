@@ -23,13 +23,25 @@ const controlAddEventForm = function (e) {
     formView.changeView(e, data);
     return;
   }
-  // 2. Adding data to state
+  // 2. Checking if event already exist
+  if (
+    model.state.events.some(
+      (ev) => ev.name.toLowerCase() === data.name.toLowerCase()
+    )
+  ) {
+    formView.showEventExistMsg();
+    return;
+  }
+  // 3. Adding data to state
   model.addEvent(data);
 
-  // 3. Render events
+  // 4. Render events
   eventView.render(model.state.events);
+
+  // 5. Scroll to added event
   eventView.scrollToEvents();
-  // 4. Change formView
+
+  // 6. Change formView
   formView.changeView(e, data);
 };
 const controlRemoveEvent = function (eventData) {
@@ -42,11 +54,22 @@ const controlRemoveEvent = function (eventData) {
 const controlAddEventRandom = function (eventEl) {
   // 1. Getting data from randomEl
   const data = randomView.getEventData(eventEl);
-
-  // 2. Adding data to state
+  // 2. Checking if event is already added
+  if (
+    model.state.events.some(
+      (ev) => ev.name.toLowerCase() === data.name.toLowerCase()
+    )
+  ) {
+    eventView.scrollToEvent(data.name);
+    return;
+  }
+  // 3. Adding data to state
   model.addEvent(data);
-  // 3. Render events
+
+  // 4. Render events
   eventView.render(model.state.events);
+
+  // 5. Scroll to added event
   eventView.scrollToEvents();
 };
 const controlSlider = function () {

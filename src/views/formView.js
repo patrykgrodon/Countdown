@@ -12,12 +12,12 @@ class formView {
   }
 
   _clear() {
-    const eventName = document.querySelector(".form__name");
-    const eventDate = document.querySelector(".form__date");
-    const eventTime = document.querySelector(".form__time");
-    eventName.value = "";
-    eventDate.value = "";
-    eventTime.value = "";
+    const formNameEl = document.querySelector(".form__name");
+    const formDateEl = document.querySelector(".form__date");
+    const formTimeEl = document.querySelector(".form__time");
+    formNameEl.value = "";
+    formDateEl.value = "";
+    formTimeEl.value = "";
   }
   _init() {
     formHeader.innerHTML =
@@ -63,6 +63,13 @@ class formView {
       ? { name: eventName, date: eventDate, time: eventTime }
       : validation;
   }
+  showEventExistMsg() {
+    const formNameEl = document.querySelector(".form__name");
+    document.querySelector(".form__valid-name").textContent =
+      "Wydarzenie o tej nazwie już istnieje.";
+    this._showValidText(formNameEl, "name");
+    this._hideValidText(formNameEl, "name");
+  }
   _showValidText(el, inputType) {
     el.style.border = "1px solid red";
     el.style.boxShadow = "0 0 0 1px red";
@@ -93,14 +100,17 @@ class formView {
     const dateValidation = eventDate ? true : false;
     const validation = nameValidation && dateValidation;
     if (!nameValidation) {
-      const eventName = document.querySelector(".form__name");
-      this._showValidText(eventName, "name");
-      this._hideValidText(eventName, "name");
+      const formNameEl = document.querySelector(".form__name");
+      document.querySelector(".form__valid-name").textContent =
+        "Wpisz nazwę wydarzenia(min. 3 znaki max. 30).";
+
+      this._showValidText(formNameEl, "name");
+      this._hideValidText(formNameEl, "name");
     }
     if (!dateValidation) {
-      const eventDate = document.querySelector(".form__date");
-      this._showValidText(eventDate, "date");
-      this._hideValidText(eventDate, "date");
+      const formDateEl = document.querySelector(".form__date");
+      this._showValidText(formDateEl, "date");
+      this._hideValidText(formDateEl, "date");
     }
     return validation;
   }
