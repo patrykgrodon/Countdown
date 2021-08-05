@@ -78,7 +78,8 @@ const controlSlider = function () {
 
 const init = function () {
   controlEvents();
-  formView.addHandlerToogleForm();
+  formView.addHandlerOpenForm();
+  formView.addHandlerCloseForm();
   eventView.addHandlerAddEvent(controlAddEventForm);
   eventView.addHandlerRemoveEvent(controlRemoveEvent);
   eventView.addHandlerDisplayModal();

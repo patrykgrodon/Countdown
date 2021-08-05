@@ -38,19 +38,22 @@ class formView {
     formValids.forEach((valid) => valid.classList.add("hidden"));
     this._clear();
   }
-  addHandlerToogleForm() {
+
+  addHandlerOpenForm() {
     document.body.addEventListener("click", (e) => {
-      if (
-        !e.target.classList.contains("display__form") &&
-        !e.target.classList.contains("form__btn--close")
-      )
-        return;
-      e.preventDefault();
-      if (e.target.classList.contains("display__form")) this._openForm();
-      if (e.target.classList.contains("form__btn--close")) this._closeForm();
+      if (!e.target.classList.contains("display__form")) return;
+      this._openForm();
     });
   }
-
+  addHandlerCloseForm() {
+    document
+      .querySelector(".form__btn--close")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(e);
+        this._closeForm();
+      });
+  }
   getFormData(e) {
     if (e.target.classList.contains("form__btn--add-next")) return;
     const eventName = document.querySelector(".form__name").value;
