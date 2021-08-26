@@ -1,7 +1,7 @@
 const randomEvents = [
   {
-    name: "Koniec wakacji",
-    date: "2021-09-01",
+    name: "Początek roku akademickiego",
+    date: "2021-10-01",
     time: "00:00",
     id: 0,
   },
@@ -27,9 +27,9 @@ const randomEvents = [
     id: 3,
   },
   {
-    name: "Pierwszy mecz Barcelony w La Liga",
-    date: "2021-08-15",
-    time: "20:00",
+    name: "Polska - Anglia, piłka nożna",
+    date: "2021-09-08",
+    time: "20:45",
     id: 4,
   },
   {
