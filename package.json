@@ -1,0 +1,23 @@
+{
+  "name": "countdown-project",
+  "version": "1.0.0",
+  "description": "In this app you can add event and see how time left to this event.\r Events are saving in the browser, so if you leave page and come back events will wait for you.\r Are also displayed examples of events which u can add to your storage.\r You can search events by name and sort by date.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyrtaposs/Countdown.git"
+  },
+  "author": "Patryk Grodon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyrtaposs/Countdown/issues"
+  },
+  "homepage": "https://github.com/kyrtaposs/Countdown#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

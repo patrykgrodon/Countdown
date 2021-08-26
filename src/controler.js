@@ -6,8 +6,9 @@ import eventView from "../src/views/eventView.js";
 
 const controlEvents = function () {
   // 1. Get events from storage
-  const events = model.getLocalStorage();
+  const events = model.getLocalStorage() || [];
   // 2. Render events
+  console.log(events);
   eventView.render(events);
 };
 
